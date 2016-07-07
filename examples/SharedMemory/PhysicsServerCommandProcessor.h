@@ -19,10 +19,16 @@ class PhysicsServerCommandProcessor
 protected:
 
 
+    
+
+    bool loadSdf(const char* fileName, char* bufferServerToClient, int bufferSizeInBytes);
+
 	bool loadUrdf(const char* fileName, const class btVector3& pos, const class btQuaternion& orn,
                              bool useMultiBody, bool useFixedBase, int* bodyUniqueIdPtr, char* bufferServerToClient, int bufferSizeInBytes);
 
 	bool	supportsJointMotor(class btMultiBody* body, int linkIndex);
+	
+	int createBodyInfoStream(int bodyUniqueId, char* bufferServerToClient, int bufferSizeInBytes);
 
 public:
 	PhysicsServerCommandProcessor();
@@ -47,7 +53,8 @@ public:
 	
 	void enableCommandLogging(bool enable, const char* fileName);
 	void replayFromLogFile(const char* fileName);
-
+    void replayLogCommand(char* bufferServerToClient, int bufferSizeInBytes );
+	void applyJointDamping(int bodyUniqueId);
 };
 
 #endif //PHYSICS_SERVER_COMMAND_PROCESSOR_H

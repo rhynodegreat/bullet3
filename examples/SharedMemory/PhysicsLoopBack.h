@@ -40,7 +40,7 @@ public:
 
     virtual int getNumJoints(int bodyIndex) const;
 
-    virtual void getJointInfo(int bodyIndex, int jointIndex, struct b3JointInfo& info) const;
+    virtual bool getJointInfo(int bodyIndex, int jointIndex, struct b3JointInfo& info) const;
 
 	///todo: move this out of the
     virtual void setSharedMemoryKey(int key);
@@ -52,6 +52,7 @@ public:
     virtual const float* getDebugLinesFrom() const;
     virtual const float* getDebugLinesTo() const;
     virtual const float* getDebugLinesColor() const;
+	virtual void getCachedCameraImage(struct b3CameraImageData* cameraData);
 
 };
 

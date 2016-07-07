@@ -26,7 +26,7 @@ public:
 
     virtual int getNumJoints(int bodyIndex) const = 0;
 
-    virtual void getJointInfo(int bodyIndex, int jointIndex, struct b3JointInfo& info) const = 0;
+    virtual bool getJointInfo(int bodyIndex, int jointIndex, struct b3JointInfo& info) const = 0;
 
     virtual void setSharedMemoryKey(int key) = 0;
 
@@ -37,6 +37,9 @@ public:
     virtual const float* getDebugLinesFrom() const = 0;
     virtual const float* getDebugLinesTo() const = 0;
     virtual const float* getDebugLinesColor() const = 0;
+
+	virtual void getCachedCameraImage(struct b3CameraImageData* cameraData)=0;
+	
 };
 
 #endif  // BT_PHYSICS_CLIENT_API_H

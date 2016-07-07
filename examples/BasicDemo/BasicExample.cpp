@@ -42,7 +42,7 @@ struct BasicExample : public CommonRigidBodyBase
 		float dist = 41;
 		float pitch = 52;
 		float yaw = 35;
-		float targetPos[3]={0,0.46,0};
+		float targetPos[3]={0,0,0};
 		m_guiHelper->resetCamera(dist,pitch,yaw,targetPos[0],targetPos[1],targetPos[2]);
 	}
 };
@@ -52,7 +52,7 @@ void BasicExample::initPhysics()
 	m_guiHelper->setUpAxis(1);
 
 	createEmptyDynamicsWorld();
-	
+	//m_dynamicsWorld->setGravity(btVector3(0,0,0));
 	m_guiHelper->createPhysicsDebugDrawer(m_dynamicsWorld);
 
 	if (m_dynamicsWorld->getDebugDrawer())
@@ -63,7 +63,7 @@ void BasicExample::initPhysics()
 	
 
 	//groundShape->initializePolyhedralFeatures();
-//	btCollisionShape* groundShape = new btStaticPlaneShape(btVector3(0,1,0),50);
+	//btCollisionShape* groundShape = new btStaticPlaneShape(btVector3(0,1,0),50);
 	
 	m_collisionShapes.push_back(groundShape);
 
@@ -140,7 +140,11 @@ void BasicExample::renderScene()
 CommonExampleInterface*    BasicExampleCreateFunc(CommonExampleOptions& options)
 {
 	return new BasicExample(options.m_guiHelper);
+
 }
+
+
+B3_STANDALONE_EXAMPLE(BasicExampleCreateFunc)
 
 
 
